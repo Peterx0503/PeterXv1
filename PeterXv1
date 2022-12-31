@@ -1,5 +1,4 @@
 -- KEY
-_G.Key = "PETERX"
 
 local keys = {
     "PETERX",
