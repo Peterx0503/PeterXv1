@@ -1,4 +1,7 @@
+
+
 -- KEY
+_G.Key = "PETERX"
 
 local keys = {
     "PETERX",
@@ -49,7 +52,7 @@ TextColor = Color3.fromRGB(255, 255, 255)
 }
 
 
--- first page
+-- 1 page
 local page = venyx:addPage("Farm", 11270204562)
 local section1 = page:addSection("AutoFarm")
 local section2 = page:addSection("Other")
@@ -135,7 +138,7 @@ end)
 
 
 
--- second page
+-- 2 page
 local theme = venyx:addPage("Theme", 11275514897)
 local colors = theme:addSection("Colors")
 
@@ -145,13 +148,132 @@ venyx:setTheme(theme, color3)
 end)
 end
 
+-- 3 page
 
--- third page
+local page = venyx:addPage("Teleport", 11990788124)
+local section3 = page:addSection("Teleport")
+
+
+section3:addButton("SPAWN", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7793.6582, 4.90750885, -81.1576385, -1, -3.05733501e-08, 5.23368546e-14, -3.05733501e-08, 1, -2.21584635e-08, -5.16593977e-14, -2.21584635e-08, -1)
+end)
+
+section3:addButton("Desert", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.67783976, 187.758591, -1, -7.55343166e-08, 3.39648658e-14, -7.55343166e-08, 1, -5.69036871e-08, -2.96666818e-14, -5.69036871e-08, -1)
+end)
+
+section3:addButton("Castle", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.49389315, 405.486603, -1, -3.98646538e-09, -2.30840686e-14, -3.98646538e-09, 1, 2.10066933e-08, 2.30003259e-14, 2.10066933e-08, -1)
+end)
+
+section3:addButton("Japanese", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.49389315, 593.352051, -1, -3.05259706e-09, -1.77603056e-14, -3.05259706e-09, 1, 1.60848934e-08, 1.77112048e-14, 1.60848934e-08, -1)
+end)
+
+section3:addButton("Winter", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.49389315, 821.483276, -1, 9.94773597e-09, -1.26405192e-14, 9.94773597e-09, 1, -5.24153165e-08, 1.21191052e-14, -5.24153165e-08, -1)
+end)
+
+section3:addButton("Tropical", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.67783976, 1034.57166, -1, 1.35376181e-08, -1.31837519e-14, 1.35376181e-08, 1, -7.13290333e-08, 1.22181267e-14, -7.13290333e-08, -1)
+end)
+
+section3:addButton("Volcanic", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.67783976, 1245.41211, -1, 1.19067423e-08, -9.51384272e-15, 1.19067423e-08, 1, -6.27344363e-08, 8.76687994e-15, -6.27344363e-08, -1)
+end)
+
+section3:addButton("Glacier", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.67783976, 1453.93188, -1, 3.59590735e-09, -1.01839559e-14, 3.59590735e-09, 1, -1.89452969e-08, 1.01158307e-14, -1.89452969e-08, -1)
+end)
+
+section3:addButton("Cave", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.67783976, 1692.76538, -1, 7.65873232e-09, -9.7318131e-15, 7.65873232e-09, 1, -4.03494376e-08, 9.42278753e-15, -4.03494376e-08, -1)
+end)
+
+section3:addButton("Enchanted", function()
+local a = game.Players.LocalPlayer.Character.HumanoidRootPart
+a.CFrame = CFrame.new(-7787.1377, 4.49389315, 1888.48682, -1, 0, 0, 0, 1, 0, 0, 0, -1)
+end)
+
+
+-- 4 page
 local page = venyx:addPage("Misc", 11982842299)
-local section1 = page:addSection("กูทำต่อไม่เป็น")
+local section4 = page:addSection("Misc")
 
 
 
+section4:addToggle("Auto Rejoin", nil, function(value)
+_G.AutoRejoin = value
+end)
+_G.AutoRejoin = true
+spawn(function()
+	while wait() do
+		if _G.AutoRejoin then
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+if isfile and readfile and writefile and delfile and isfile("autorj-lastimsg.rj") then
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "Auto Rejoind!",
+        Text = "Message: \n"..readfile("autorj-lastimsg.rj"),
+        Icon = "",
+        Duration = 3
+	})
+    delfile("autorj-lastimsg.rj")
+end
+
+game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(prompt)
+    if prompt.Name == "ErrorPrompt" and prompt:FindFirstChild('MessageArea') and prompt.MessageArea:FindFirstChild("ErrorFrame") then
+        spawn(function()
+            if writefile and readfile and isfile and delfile then
+                writefile("autorj-lastimsg.rj", game.CoreGui.RobloxPromptGui.promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text)
+            end
+            game.StarterGui:SetCore("SendNotification",{
+                Title = "Auto Rejoin Work",
+                Text = "success",
+                Icon = "",
+                Duration = math.huge
+	        })
+            while wait() do 
+              if #game.Players:GetPlayers() <= 1 then
+		           wait()
+		           game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
+	           else
+	               game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+	           end
+            end
+        end)
+    end
+end)
+		end
+	end
+end)
+
+
+
+section4:addToggle("AntiAfk", nil, function(value)
+_G.AntiAfk = value
+end)
+_G.AntiAfk = true
+spawn(function()
+	while wait() do
+	if _G.AntiAfk then
+	for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
+    v:Disable()
+end
+		end
+	end
+end)
 
 
 -- load
